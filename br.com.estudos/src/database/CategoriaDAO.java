@@ -6,14 +6,14 @@ import java.util.List;
 import model.Categoria;
 
 public class CategoriaDAO {
-    private static final String INSERT_SQL = "INSERT INTO categoria (nome, descricao) VALUES (?, ?)";
-    private static final String SELECT_ALL_SQL = "SELECT id, nome, descricao FROM categoria";
-    private static final String SELECT_BY_ID_SQL = "SELECT id, nome, descricao FROM categoria WHERE id = ?";
+    private static final String INSERT_SQL = "INSERT INTO categoria (nome_categoria, id_categoria) VALUES (?, ?)";
+    private static final String SELECT_ALL_SQL = "SELECT id, nome_categoria, id_categoria FROM categoria";
+    private static final String SELECT_BY_ID_SQL = "SELECT id, nome_categoria, id_categoria FROM categoria WHERE id = ?";
 
     public void inserirCategoria(Connection conn, Categoria categoria) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(INSERT_SQL)) {
-            stmt.setString(1, categoria.getNome());
-            stmt.setString(2, categoria.getDescricao());
+            stmt.setString(1, categoria.getnome_categoria());
+            stmt.setInt(2, categoria.getid_categoria());
             stmt.executeUpdate();
         }
     }
@@ -24,9 +24,8 @@ public class CategoriaDAO {
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 Categoria categoria = new Categoria();
-                categoria.setId(rs.getInt("id"));
-                categoria.setNome(rs.getString("nome"));
-                categoria.setDescricao(rs.getString("descricao"));
+                categoria.setid_categoria(rs.getInt("id"));
+                categoria.setnome_categoria(rs.getString("nome"));
                 categorias.add(categoria);
             }
         }
@@ -40,9 +39,8 @@ public class CategoriaDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     categoria = new Categoria();
-                    categoria.setId(rs.getInt("id"));
-                    categoria.setNome(rs.getString("nome"));
-                    categoria.setDescricao(rs.getString("descricao"));
+                    categoria.setid_categoria(rs.getInt("id"));
+                    categoria.setnome_categoria(rs.getString("nome"));
                 }
             }
         }

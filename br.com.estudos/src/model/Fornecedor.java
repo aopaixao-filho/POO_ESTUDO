@@ -1,42 +1,46 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Fornecedor {
-    private String razao_social;
+    private int idFornecedor;
+    private String tipo;
+    private String razaoSocial;
+    private String cnpj;
     private String uf;
     private String telefone;
     private String email;
-    private String nome_fantasia;
-    private String status_situacao;
+    private String nomeFantasia;
+    private String statusSituacao;
     private String bairro;
     private String logradouro;
     private String numero;
     private String complemento;
-    private String cpf;
     private String cep;
-    private String cnpj;
     private String municipio;
+    private Date dataAbertura;
     private List<Produto> produtos;
 
-    public Fornecedor(String razao_social, String uf, String telefone, String email, String nome_fantasia,
-                      String status_situacao, String bairro, String logradouro, String numero, String complemento,
-                      String cpf, String cep, String cnpj, String municipio) {
-        this.razao_social = razao_social;
+    public Fornecedor(String tipo, String razaoSocial, String cnpj, String uf, String telefone,
+                      String email, String nomeFantasia, String statusSituacao, String bairro, String logradouro,
+                      String numero, String complemento, String cep, String municipio, Date dataAbertura) {
+        this.tipo = tipo;
+        this.razaoSocial = razaoSocial;
+        this.cnpj = cnpj;
         this.uf = uf;
         this.telefone = telefone;
         this.email = email;
-        this.nome_fantasia = nome_fantasia;
-        this.status_situacao = status_situacao;
+        this.nomeFantasia = nomeFantasia;
+        this.statusSituacao = statusSituacao;
         this.bairro = bairro;
         this.logradouro = logradouro;
         this.numero = numero;
         this.complemento = complemento;
-        this.cpf = cpf;
         this.cep = cep;
-        this.cnpj = cnpj;
         this.municipio = municipio;
+        this.dataAbertura = dataAbertura;
         this.produtos = new ArrayList<>();
     }
 
@@ -45,12 +49,36 @@ public class Fornecedor {
     }
 
     // Getters and Setters
-    public String getRazao_social() {
-        return razao_social;
+    public int getIdFornecedor() {
+        return idFornecedor;
     }
 
-    public void setRazao_social(String razao_social) {
-        this.razao_social = razao_social;
+    public void setIdFornecedor(int idFornecedor) {
+        this.idFornecedor = idFornecedor;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getRazaoSocial() {
+        return razaoSocial;
+    }
+
+    public void setRazaoSocial(String razaoSocial) {
+        this.razaoSocial = razaoSocial;
+    }
+
+    public String getCnpj() {
+        return cnpj;
+    }
+
+    public void setCnpj(String cnpj) {
+        this.cnpj = cnpj;
     }
 
     public String getUf() {
@@ -77,20 +105,20 @@ public class Fornecedor {
         this.email = email;
     }
 
-    public String getNome_fantasia() {
-        return nome_fantasia;
+    public String getNomeFantasia() {
+        return nomeFantasia;
     }
 
-    public void setNome_fantasia(String nome_fantasia) {
-        this.nome_fantasia = nome_fantasia;
+    public void setNomeFantasia(String nomeFantasia) {
+        this.nomeFantasia = nomeFantasia;
     }
 
-    public String getStatus_situacao() {
-        return status_situacao;
+    public String getStatusSituacao() {
+        return statusSituacao;
     }
 
-    public void setStatus_situacao(String status_situacao) {
-        this.status_situacao = status_situacao;
+    public void setStatusSituacao(String statusSituacao) {
+        this.statusSituacao = statusSituacao;
     }
 
     public String getBairro() {
@@ -125,14 +153,6 @@ public class Fornecedor {
         this.complemento = complemento;
     }
 
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
     public String getCep() {
         return cep;
     }
@@ -141,20 +161,20 @@ public class Fornecedor {
         this.cep = cep;
     }
 
-    public String getCnpj() {
-        return cnpj;
-    }
-
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
-
     public String getMunicipio() {
         return municipio;
     }
 
     public void setMunicipio(String municipio) {
         this.municipio = municipio;
+    }
+
+    public Date getDataAbertura() {
+        return dataAbertura;
+    }
+
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 
     public List<Produto> getProdutos() {
@@ -169,20 +189,22 @@ public class Fornecedor {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Fornecedor{");
-        sb.append("razao_social=").append(razao_social);
+        sb.append("idFornecedor=").append(idFornecedor);
+        sb.append(", tipo=").append(tipo);
+        sb.append(", razaoSocial=").append(razaoSocial);
+        sb.append(", cnpj=").append(cnpj);
         sb.append(", uf=").append(uf);
         sb.append(", telefone=").append(telefone);
         sb.append(", email=").append(email);
-        sb.append(", nome_fantasia=").append(nome_fantasia);
-        sb.append(", status_situacao=").append(status_situacao);
+        sb.append(", nomeFantasia=").append(nomeFantasia);
+        sb.append(", statusSituacao=").append(statusSituacao);
         sb.append(", bairro=").append(bairro);
         sb.append(", logradouro=").append(logradouro);
         sb.append(", numero=").append(numero);
         sb.append(", complemento=").append(complemento);
-        sb.append(", cpf=").append(cpf);
         sb.append(", cep=").append(cep);
-        sb.append(", cnpj=").append(cnpj);
         sb.append(", municipio=").append(municipio);
+        sb.append(", dataAbertura=").append(dataAbertura);
         sb.append('}');
         return sb.toString();
     }

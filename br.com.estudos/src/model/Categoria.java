@@ -1,49 +1,39 @@
 package model;
 
 public class Categoria {
-    private int id;
-    private String nome;
-    private String descricao;
+    private int id_categoria;
+    private String nome_categoria;
+    
 
     public Categoria() {
     }
 
     public Categoria(int id, String nome, String descricao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
+        this.id_categoria = id_categoria;
+        this.nome_categoria = nome_categoria;
     }
 
-    public int getId() {
-        return id;
+    public int getid_categoria() {
+        return id_categoria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setid_categoria(int id_categoria) {
+        this.id_categoria = id_categoria;
     }
 
-    public String getNome() {
-        return nome;
+    public String getnome_categoria() {
+        return nome_categoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setnome_categoria(String nome_categoria) {
+        this.nome_categoria = nome_categoria;
     }
 
     @Override
     public String toString() {
         return "Categoria{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", descricao='" + descricao + '\'' +
+                "id=" + id_categoria +
+                ", nome='" + nome_categoria + '\'' +
                 '}';
     }
 }

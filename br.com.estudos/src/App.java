@@ -3,6 +3,8 @@ import database.FornecedorDAO;
 import database.ProdutoDAO;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 import model.Categoria;
@@ -91,40 +93,46 @@ public class App {
         List<Produto> produtos = produtoDAO.listarProdutos(conn);
         for (Produto produto : produtos) {
             System.out.println("Produto: " + produto.getNome_produto() + ", SKU: " + produto.getSku() +
-                               ", Categoria: " + produto.getCategoria().getNome());
+                               ", Categoria: " + produto.getCategoria().getnome_categoria());
         }
     }
 
     private static void inserirFornecedor(Scanner scanner, FornecedorDAO fornecedorDAO, Connection conn) throws Exception {
         System.out.println("\n=== Inserir Fornecedor ===");
+        System.out.print("Tipo: ");
+        String tipo = scanner.nextLine();
         System.out.print("Razão Social: ");
         String razaoSocial = scanner.nextLine();
+        System.out.print("CNPJ: ");
+        String cnpj = scanner.nextLine();
         System.out.print("UF: ");
         String uf = scanner.nextLine();
-        System.out.print("Telefone: ");
+        System.out.print("telefone: ");
         String telefone = scanner.nextLine();
         System.out.print("Email: ");
         String email = scanner.nextLine();
         System.out.print("Nome Fantasia: ");
         String nomeFantasia = scanner.nextLine();
+        System.out.print("Status Situacao: ");
+        String statusSituacao = scanner.nextLine();
         System.out.print("Bairro: ");
         String bairro = scanner.nextLine();
         System.out.print("Logradouro: ");
-        String logradouro = scanner.nextLine();
-        System.out.print("Número: ");
+        String Logradouro = scanner.nextLine();
+        System.out.print("Numero: ");
         String numero = scanner.nextLine();
         System.out.print("Complemento: ");
         String complemento = scanner.nextLine();
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
         System.out.print("CEP: ");
         String cep = scanner.nextLine();
-        System.out.print("CNPJ: ");
-        String cnpj = scanner.nextLine();
-        System.out.print("Município: ");
+        System.out.print("Municipio: ");
         String municipio = scanner.nextLine();
+        System.out.print("Data Abertura (formato dd/MM/yyyy): ");
+        String dataAberturaStr = scanner.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date dataAbertura = sdf.parse(dataAberturaStr);
 
-        Fornecedor fornecedor = new Fornecedor(razaoSocial, uf, telefone, email, nomeFantasia, null, bairro, logradouro, numero, complemento, cpf, cep, cnpj, municipio);
+        Fornecedor fornecedor = new Fornecedor(tipo, razaoSocial, cnpj, uf, telefone, email, nomeFantasia, statusSituacao, bairro, Logradouro, numero, complemento, cep, municipio, dataAbertura);
         fornecedorDAO.inserirFornecedor(conn, fornecedor);
         System.out.println("Fornecedor inserido com sucesso!");
     }
@@ -133,12 +141,12 @@ public class App {
         System.out.println("\n=== Inserir Categoria ===");
         System.out.print("Nome: ");
         String nome = scanner.nextLine();
-        System.out.print("Descrição: ");
-        String descricao = scanner.nextLine();
+        System.out.print("id: ");
+        int id = scanner.nextInt();
 
         Categoria categoria = new Categoria();
-        categoria.setNome(nome);
-        categoria.setDescricao(descricao);
+        categoria.setnome_categoria(nome);
+        categoria.setid_categoria(id);
         categoriaDAO.inserirCategoria(conn, categoria);
         System.out.println("Categoria inserida com sucesso!");
     }

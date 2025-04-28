@@ -12,7 +12,7 @@ public class ProdutoDAO {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, produto.getNome_produto());
             stmt.setString(2, produto.getSku());
-            stmt.setInt(3, produto.getCategoria().getId());
+            stmt.setInt(3, produto.getCategoria().getid_categoria());
             stmt.executeUpdate();
         }
     }
@@ -29,9 +29,8 @@ public class ProdutoDAO {
                 produto.setSku(rs.getString("sku"));
 
                 Categoria categoria = new Categoria();
-                categoria.setId(rs.getInt("categoria_id"));
-                categoria.setNome(rs.getString("categoria_nome"));
-                categoria.setDescricao(rs.getString("categoria_descricao"));
+                categoria.setid_categoria(rs.getInt("categoria_id"));
+                categoria.setnome_categoria(rs.getString("categoria_nome"));
 
                 produto.setCategoria(categoria);
                 produtos.add(produto);
