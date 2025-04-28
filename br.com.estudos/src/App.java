@@ -2,6 +2,7 @@ import database.CategoriaDAO;
 import database.FornecedorDAO;
 import database.ProdutoDAO;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.util.List;
 import java.util.Scanner;
@@ -11,7 +12,7 @@ import model.Produto;
 
 public class App {
     public static void main(String[] args) {
-        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.40.128:15432/postgres", "postgres", "alexandre26");
+        try (Connection conn = DriverManager.getConnection("jdbc:postgresql://192.168.220.128:15432/comercio", "postgres", "Postgres2019!");
              Scanner scanner = new Scanner(System.in)) {
 
             FornecedorDAO fornecedorDAO = new FornecedorDAO();
@@ -96,9 +97,14 @@ public class App {
     }
 
     private static void inserirFornecedor(Scanner scanner, FornecedorDAO fornecedorDAO, Connection conn) throws Exception {
+        
         System.out.println("\n=== Inserir Fornecedor ===");
+        System.out.print("Tipo: ");
+        String tipo = scanner.nextLine();
         System.out.print("Razão Social: ");
         String razaoSocial = scanner.nextLine();
+        System.out.print("CNPJ: ");
+        String cnpj = scanner.nextLine();
         System.out.print("UF: ");
         String uf = scanner.nextLine();
         System.out.print("Telefone: ");
@@ -107,6 +113,8 @@ public class App {
         String email = scanner.nextLine();
         System.out.print("Nome Fantasia: ");
         String nomeFantasia = scanner.nextLine();
+        System.out.print("Status Situação: ");
+        String statusSituacao = scanner.nextLine();
         System.out.print("Bairro: ");
         String bairro = scanner.nextLine();
         System.out.print("Logradouro: ");
@@ -115,16 +123,16 @@ public class App {
         String numero = scanner.nextLine();
         System.out.print("Complemento: ");
         String complemento = scanner.nextLine();
-        System.out.print("CPF: ");
-        String cpf = scanner.nextLine();
         System.out.print("CEP: ");
         String cep = scanner.nextLine();
-        System.out.print("CNPJ: ");
-        String cnpj = scanner.nextLine();
         System.out.print("Município: ");
         String municipio = scanner.nextLine();
+        System.out.print("Data de Abertura (yyyy-MM-dd): ");
+        String dataAberturaStr = scanner.nextLine();
+        Date dataAbertura = Date.valueOf(dataAberturaStr); // Converte a string para Date
 
-        Fornecedor fornecedor = new Fornecedor(razaoSocial, uf, telefone, email, nomeFantasia, null, bairro, logradouro, numero, complemento, cpf, cep, cnpj, municipio);
+        Fornecedor fornecedor = new Fornecedor(tipo, razaoSocial, cnpj, uf, telefone, email, nomeFantasia, statusSituacao, 
+                                            bairro, logradouro, numero, complemento, cep, municipio, dataAbertura);
         fornecedorDAO.inserirFornecedor(conn, fornecedor);
         System.out.println("Fornecedor inserido com sucesso!");
     }
