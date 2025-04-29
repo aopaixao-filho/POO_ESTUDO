@@ -9,11 +9,11 @@ public class Produto {
     private String imagem_produto;
     private Categoria categoria;
 
-    public Long getId_produto() {
+    public Long getid_produto() {
         return id_produto;
     }
 
-    public void setId_produto(Long id_produto) {
+    public void setid_produto(Long id_produto) {
         this.id_produto = id_produto;
     }
 

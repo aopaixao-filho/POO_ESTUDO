@@ -7,8 +7,8 @@ import model.Fornecedor;
 
 public class FornecedorDAO {
     private static final String INSERT_SQL =
-        "INSERT INTO fornecedor (razao_social, nome_fantasia, cnpj, bairro, cpf, email, telefone, uf, logradouro, complemento, numero, cep, municipio) " +
-        "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    "INSERT INTO fornecedor (razao_social, nome_fantasia, cnpj, uf, telefone, email, status_situacao, bairro, logradouro, numero, complemento, cep, municipio, data_abertura) " +
+    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
     private static final String SELECT_ALL_SQL =
         "SELECT id_fornecedor, tipo, razao_social, cnpj, uf, telefone, email, nome_fantasia, " +

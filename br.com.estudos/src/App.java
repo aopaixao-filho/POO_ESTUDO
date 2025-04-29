@@ -73,6 +73,9 @@ public class App {
         System.out.print("ID da Categoria: ");
         int categoriaId = scanner.nextInt();
         scanner.nextLine();
+        System.out.print("ID do Fornecedor: ");
+        long fornecedorid = scanner.nextLong();
+        scanner.nextLine();
 
         Categoria categoria = categoriaDAO.buscarCategoriaPorId(conn, categoriaId);
         if (categoria == null) {
@@ -84,6 +87,7 @@ public class App {
         produto.setNome_produto(nomeProduto);
         produto.setSku(sku);
         produto.setCategoria(categoria);
+        produto.setId_fornecedor(fornecedorid);
         produtoDAO.inserirProduto(conn, produto);
         System.out.println("Produto inserido com sucesso!");
     }

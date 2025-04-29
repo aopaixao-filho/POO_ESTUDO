@@ -185,27 +185,23 @@ public class Fornecedor {
         this.produtos = produtos;
     }
 
-    @Override
-    public String toString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("Fornecedor{");
-        sb.append("idFornecedor=").append(idFornecedor);
-        sb.append(", tipo=").append(tipo);
-        sb.append(", razaoSocial=").append(razaoSocial);
-        sb.append(", cnpj=").append(cnpj);
-        sb.append(", uf=").append(uf);
-        sb.append(", telefone=").append(telefone);
-        sb.append(", email=").append(email);
-        sb.append(", nomeFantasia=").append(nomeFantasia);
-        sb.append(", statusSituacao=").append(statusSituacao);
-        sb.append(", bairro=").append(bairro);
-        sb.append(", logradouro=").append(logradouro);
-        sb.append(", numero=").append(numero);
-        sb.append(", complemento=").append(complemento);
-        sb.append(", cep=").append(cep);
-        sb.append(", municipio=").append(municipio);
-        sb.append(", dataAbertura=").append(dataAbertura);
-        sb.append('}');
-        return sb.toString();
-    }
+        @Override
+        public String toString() {
+            return "--- Fornecedor ---" +
+                   "\n  ID: " + idFornecedor +
+                   "\n  Tipo: " + (tipo != null ? tipo : "N/A") +
+                   "\n  Razão Social: " + razaoSocial +
+                   "\n  Nome Fantasia: " + nomeFantasia +
+                   "\n  CNPJ: " + cnpj +
+                   "\n  Status: " + statusSituacao +
+                   "\n  Contato:" +
+                   "\n    Telefone: " + telefone +
+                   "\n    Email: " + email +
+                   "\n  Endereço:" +
+                   "\n    Logradouro: " + logradouro + ", " + numero + (complemento != null && !complemento.isEmpty() ? " - " + complemento : "") +
+                   "\n    Bairro: " + bairro +
+                   "\n    Município: " + municipio + " - " + uf +
+                   "\n    CEP: " + cep +
+                   "\n  Data Abertura: " + (dataAbertura != null ? dataAbertura : "N/A");
+        }
 }
